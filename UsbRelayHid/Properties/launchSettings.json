@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "UsbRelayHid": {
+      "commandName": "Project",
+      "commandLineArgs": "off"
+    }
+  }
+}
