@@ -10,7 +10,7 @@ namespace UsbRelayHid
         private static Relay _selectedRelay=null;
 
 
-        private static void switchRelay(bool switching)
+        private static void switchRelay(bool switch2NO)
         {
             int channel=1; // 1~8, for channel 1 control only by now
 
@@ -21,17 +21,30 @@ namespace UsbRelayHid
             {
                 _selectedRelay = new Relay(items[0].RelayInfo); // 1 relay only
                 _selectedRelay.Open();
-                //var channelsStatus = _selectedRelay.ReadChannels();
-                _selectedRelay.WriteChannel(channel, switching);
+                _selectedRelay.WriteChannel(channel, switch2NO);
                 _selectedRelay.Close(); 
+                Console.Write("USB Relay HID switch to ");
+                if (switch2NO) 
+                {
+                    Console.WriteLine("NO");
+                }
+                else 
+                {
+                    Console.WriteLine("NC");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No USB Relay HOD found.");
             }
         }
 
         static void Main(string[] args)
         {
+            //args[0]: [NC|NO]
             if (args.Length > 0)
             {
-                if (args[0].ToLower() == "on")
+                if (args[0].ToUpper() == "NO")
                 {
                     switchRelay(true);
                 }

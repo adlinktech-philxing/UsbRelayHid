@@ -2,7 +2,7 @@
   "profiles": {
     "UsbRelayHid": {
       "commandName": "Project",
-      "commandLineArgs": "off"
+      "commandLineArgs": "nc"
     }
   }
 }
