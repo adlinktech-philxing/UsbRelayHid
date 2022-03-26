@@ -53,6 +53,10 @@ namespace UsbRelayHid
                     switchRelay(false);
                 }
             }
+            else
+            {
+                Console.WriteLine("Usage: UsbRelayHid NC|NO");
+            }
         }
     }
 }
